@@ -1,5 +1,21 @@
 var targetText = "house2";
 
+function comparator(a, b) {
+  if (a.score < b.score) return -1;
+  if (a.score > b.score) return 1;
+  return 0;
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
+function getRandomAscii() {
+    return getRandomInt(0, 256);
+}
+
 function generateTarget(txt){
     var result = [];
     for (i = 0; i < txt.length; i++){
@@ -8,14 +24,16 @@ function generateTarget(txt){
     return result;
 }
 
-function generatePopulation(quantity){
+// note: variable j (text length) is fixed at 6
+
+function generatePopulation(quantity, chromosomeSize){
     var p = [];
     for (i = 0; i < quantity; i++){
         var chromosome = [];
-        for (j = 0; j < 6; j++){
-            chromosome.push(Math.floor(Math.random() * 256));
+        for (j = 0; j < chromosomeSize; j++){
+            chromosome.push(getRandomAscii());
         }
-        p.push(chromosome);
+        p.push({genes: chromosome, score: 0});
     }
     return p;
 }
@@ -29,41 +47,48 @@ function sigma(a){
     return result;
 }
 
-function calculateDifference(chromosome, targetC){
-    //console.log(targetC);
-    var difference = [];
+function calculateScore(chromosome, targetC){
+    var score = 0;
     for (var i = 0; i < chromosome.length; i++){
-        difference.push(Math.abs(chromosome[i] - targetC[i]));
-        //console.log(chromosome[i].toString() + " - " + targetC[i].toString() + " = " + (chromosome[i] - targetC[i]).toString());
+        score = score + Math.abs(chromosome[i] - targetC[i])
     }
-    //console.log("inside: ", chromosome);
-    return difference;
+    return score;
 }
 
+function sortPopulation(p){
+    p.sort(comparator);
+}
 
 
 function setScore(p, t){
     for (var i = 0; i < p.length; i++){
-        //console.log("old: ", p[i]);
-        var difference = calculateDifference(p[i], t);
-        //console.log("new: ", p[i]);
-        //console.log(t);
-        //console.log("i:" + i.toString() + " - Chromosome: " + p[i].toString() + " - target: " + t.toString() + " - difference: " + difference);
-        //console.log("difference: " + difference.toString());
-        var score = sigma(difference);
-        //console.log("score: " + score.toString());
-        p[i].push(score);
+        p[i].score = calculateScore(p[i].genes, t);
+    }
+}
+
+function reproduce(chromosome1, chromosome2){
+    
+}
+
+function crossOver(p){
+    for (var i = 0; i < (p.length / 2); i = i + 2){
+        var j = i + 1;
+        console.log("i :" + i + ", j :" + j);
     }
 }
 
 
 // processing area
 var target = generateTarget(targetText);
-var population = generatePopulation(5);
+console.log(target);
+var population = generatePopulation(6, targetText.length);
 setScore(population, target);
+sortPopulation(population);
+var newGeneration = crossOver(population);
 
 // test area
 
 console.log(population);
+//console.log();
 //console.log(calculateDifference([15, 25, 58], [25, 2, 11]));
 //console.log(sigma([2, 5, 8, 29, 12]));
