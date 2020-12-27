@@ -97,3 +97,22 @@ class Chromosome {
 
 var ch = new Chromosome(6);
 console.log(ch.toString());
+
+
+
+var array = [2, 5, 6, 9, 1, 8, 7, 3, 3];
+
+function bulbSort(array) {
+    for (var i = 0; i < array.length - 1; i++) {
+        for (var j = i + 1; j < array.length; j ++) {
+            if (array[j] < array[i]) {
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+    }
+    return array;
+}
+
+console.log(bulbSort(array));
