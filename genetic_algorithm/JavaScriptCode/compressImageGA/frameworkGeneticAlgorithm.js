@@ -102,7 +102,8 @@ function reproduce(c1, c2){
     var c4 = genSegs2[0].concat(genSegs1[1], genSegs2[2], genSegs1[3]);
     //console.log("c3: ", c3);
     //console.log("c4: ", c4);
-    return [c3, c4];
+    
+    return [c3.sort(function(a, b){return a - b;}), c4.sort(function(a, b){return a - b;})];
 }
 
 function crossOver(p){

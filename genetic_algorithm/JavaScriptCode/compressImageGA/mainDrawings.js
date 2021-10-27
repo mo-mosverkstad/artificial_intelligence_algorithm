@@ -149,8 +149,8 @@ function increaseBestChromosome(bestChromosome) {
 }
 
 function generateBestOnGA(targtC) {
-    var populationQuantity = 500;
-    var chromosomeSize = 8;
+    var populationQuantity = parseInt(document.getElementById("inputPopulationQuantity").value);
+    var chromosomeSize = parseInt(document.getElementById("inputChromosomeSize").value);
     var bestChromosome = {chromosome: {genes: [], score: 0}, met: 0};
     
     population = generatePopulation(populationQuantity, chromosomeSize);
@@ -161,8 +161,8 @@ function generateBestOnGA(targtC) {
     //console.log(bestChromosome);
     
     var generationNumber = 0;
-    var generationMax = 50;
-    var metMax = 3;
+    var generationMax = parseInt(document.getElementById("inputGenerationMax").value);
+    var metMax = 2;
     
     while (bestChromosome.met <= metMax && generationNumber < generationMax){
         var newGeneration = crossOver(population);
@@ -189,11 +189,11 @@ function compressGA() {
     var histogramArray = statisData(imageOrigData);
     //document.getElementById('outputGA').innerHTML = histogramArray;
     cleanDiv("outputGA");
-    appendInDiv("outputGA", "To generate RED using GA:");
+    appendInDiv("outputGA", "\nTo generate RED using GA:");
     bestChromosomeR = generateBestOnGA(histogramArray.r);
-    appendInDiv("outputGA", "To generate GREEN using GA:");
+    appendInDiv("outputGA", "\nTo generate GREEN using GA:");
     bestChromosomeG = generateBestOnGA(histogramArray.g);
-    appendInDiv("outputGA", "To generate BLUE using GA:");
+    appendInDiv("outputGA", "\nTo generate BLUE using GA:");
     bestChromosomeB = generateBestOnGA(histogramArray.b);
     
     pos = canvasPosition.getImagePosition(1, 0);
