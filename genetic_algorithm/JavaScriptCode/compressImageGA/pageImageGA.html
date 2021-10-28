@@ -1,75 +1,47 @@
 <!DOCTYPE html>
-<html>
-<head>
-<style>
-* {
-    margin: 0; padding: 0; box-sizing: border-box;
-}
+<html lang = "en">
+    <head>
+        <title>AI image compresser</title>
+        <link rel="stylesheet" href="estilo.css" />
+    </head>
+    <body>
+        <h1>AI image compresser</h1>
+        <p>LEFT PANEL</p>
+        <div class="container">
+            <input type="file" id="fileUpload" style="width: 51.2%;" />
+        </div>
+        <div class="container2">
+            <button onclick="colorOrigScatter()">Color Scattering</button>
+            <button onclick="colorOrigAnalysis()">Analysis</button>
+        </div>
+        <div class="container3">
+            <input type="text" placeholder="Population Quantity..." id="inputPopulationQuantity" />
+            <input type="text" placeholder="Chromosome Size..." id="inputChromosomeSize" />
+            <input type="text" placeholder="Max Generation..." id="inputGenerationMax" />
+            <button onclick="compressGA()">Compress by GA</button>
+        </div>
+        <div class="display" id="outputGA"></div>
 
-html, body {
-    width: 100%;
-}
+        <p>RIGHT PANEL</p>
+        <div class="container">
+            <button onclick="colorProcScatter()">Color Scattering</button>
+            <button onclick="colorProcAnalysis()">Analysis</button>
+            <button onclick="generateOutputImg()">generateOutputImg</button>
+        </div>
 
-.container, .container2, .container3, .container4 {
-    width: 100%
-}
+        <canvas id="imageProcessCanvas" style="border: 1px solid #d3d3d3;">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+        <canvas id="outputCanvas" style="display: none;">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+        <img id="outputImg" />
 
-button {
-    width: 10%;
-}
-
-.display {
-  width: 100%;
-  padding: 10px 0;
-  text-align: left;
-  background-color: lightblue;
-  margin-top: 10px;
-  font-family: "Courier New", Courier, monospace;
-}
-</style>
-</head>
-<body>
-
-<p>LEFT PANEL</p>
-<div class="container">
-    <input type='file' id="fileUpload" style="width: 51.2%"/>
-</div>
-<div class="container2">
-    <button onclick="colorOrigScatter()">Color Scattering</button>
-    <button onclick="colorOrigAnalysis()">Analysis</button>
-</div>
-<div class="container3">
-    <input type="text" placeholder="Population Quantity..." id="inputPopulationQuantity">
-    <input type="text" placeholder="Chromosome Size..." id="inputChromosomeSize">
-    <input type="text" placeholder="Max Generation..." id="inputGenerationMax">
-    <button onclick="compressGA()">Compress by GA</button>
-</div>
-<div class="display" id="outputGA"></div>
-
-<p>RIGHT PANEL</p>
-<div class="container">
-    <button onclick="colorProcScatter()">Color Scattering</button>
-    <button onclick="colorProcAnalysis()">Analysis</button>
-    <button onclick="generateOutputImg()">generateOutputImg</button>
-</div>
-
-
-<canvas id="imageProcessCanvas" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.
-</canvas>
-<canvas id="outputCanvas" style="display:none;">
-Your browser does not support the HTML5 canvas tag.
-</canvas>
-<img id="outputImg">
-
-<script src="frameworkGeneticAlgorithm.js"></script>
-<script src="frameworkPosition.js"></script>
-<script src="frameworkDrawings.js"></script>
-<script src="frameworkAnalysis.js"></script>
-<script src="frameworkProcess.js"></script>
-<script src="mainDrawings.js"></script>
-
-
-
-</body>
+        <script src="frameworkGeneticAlgorithm.js"></script>
+        <script src="frameworkPosition.js"></script>
+        <script src="frameworkDrawings.js"></script>
+        <script src="frameworkAnalysis.js"></script>
+        <script src="frameworkProcess.js"></script>
+        <script src="mainDrawings.js"></script>
+    </body>
 </html>
