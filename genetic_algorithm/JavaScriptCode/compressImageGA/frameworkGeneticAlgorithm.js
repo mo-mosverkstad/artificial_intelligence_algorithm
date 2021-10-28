@@ -59,7 +59,8 @@ function calculateScore(chromosome, targetC){
     
     while (tPoint < targetC.length) {
         if ((chPoint == chromosome.length - 1) || (tPoint >= chromosome[chPoint] && tPoint < chromosome[chPoint+1])) {
-            score = score + Math.abs(targetC[tPoint] - targetC[chromosome[chPoint]]);
+            //score = score + Math.abs(targetC[tPoint] - targetC[chromosome[chPoint]]);
+            score = score + Math.abs(targetC[tPoint] - targetC[chromosome[chPoint]]) * Math.abs(chromosome[chPoint] - tPoint);
         } else {
             if (chPoint + 1 < chromosome.length) {
                 chPoint += 1;
