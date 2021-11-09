@@ -10,6 +10,8 @@ var fileUploadRight = document.getElementById('fileUploadRight');
 var imageOrigData = null;
 var imageProcData = null;
 
+var imageColorAmount = 0;
+
 var canvasPosition = new CanvasPosition(ctx);
 var imgOrignal = new Image();
 
@@ -22,6 +24,7 @@ function readImage() {
                 canvasPosition.setImageSize(imgOrignal.naturalWidth, imgOrignal.naturalHeight);
                 ctx.drawImage(imgOrignal, 0, 0, imgOrignal.naturalWidth, imgOrignal.naturalHeight);
                 imageOrigData  = loadData(0, 0, imgOrignal.naturalWidth, imgOrignal.naturalHeight);
+                imageColorAmount = imageOrigData.width * imageOrigData.height;
            };
         };       
         fr.readAsDataURL( this.files[0] );
@@ -36,49 +39,6 @@ function imageProcessGeneralFunction(ipFunc, func) {
     ipFunc(func, imageOrigData, pos);
     imageProcData = loadData(pos.x, pos.y, imgOrignal.naturalWidth, imgOrignal.naturalHeight);
 }
-
-function makeSqrt() {
-    imageProcessGeneralFunction(imageProcess, imageSqrt);
-}
-
-function grayScale() {
-    imageProcessGeneralFunction(imageProcess, imageGray);
-}
-
-function invertedColor() {
-    imageProcessGeneralFunction(imageProcess, imageInverted);
-}
-
-function compress() {
-    imageProcessGeneralFunction(imageProcess, imageCompress);
-}
-
-function soften() {
-    imageProcessGeneralFunction(imageProcess2, imageSoften);
-}
-
-function sharpen() {
-    imageProcessGeneralFunction(imageProcess2, imageSharpen);
-}
-
-function edge() {
-    imageProcessGeneralFunction(imageProcess2, imageEdge);
-}
-
-function edgeBnW() {
-    imageProcessGeneralFunction(imageProcess2, imageEdgeBnW);
-}
-
-
-function medianFilter() {
-    imageProcessGeneralFunction(imageProcessArray, imageMedianFilter);
-}
-
-function valueFilter() {
-    imageProcessGeneralFunction(imageProcess, imageValueFilter);
-}
-
-
 
 
 function colorOrigScatter() {
@@ -148,6 +108,14 @@ function increaseBestChromosome(bestChromosome) {
     bestChromosome.met += 1;
 }
 
+function shrinkText(string, length) {
+    if (string.length >= length) {
+        return string.substring(0, length-3) + "...";
+    } else {
+        return string;
+    }
+}
+
 function generateBestOnGA(targtC) {
     var populationQuantity = parseInt(document.getElementById("inputPopulationQuantity").value);
     var chromosomeSize = parseInt(document.getElementById("inputChromosomeSize").value);
@@ -176,7 +144,7 @@ function generateBestOnGA(targtC) {
         } else {
             increaseBestChromosome(bestChromosome);
         }
-        appendInDiv("outputGA", "Generation: " + generationNumber + "; result: " + convertToAscii(population[0].genes) + "; score: " + population[0].score);
+        appendInDiv("outputGA", "Generation: " + generationNumber + "; result: " + shrinkText(convertToAscii(population[0].genes),60) + "; score: " + (population[0].score * 100 / imageColorAmount).toFixed(6) + "%");
 
         //console.log(bestChromosome);
         generationNumber++;

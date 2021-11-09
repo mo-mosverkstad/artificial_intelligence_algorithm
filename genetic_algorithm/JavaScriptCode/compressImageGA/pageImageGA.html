@@ -1,32 +1,139 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        <title>AI image compresser</title>
-        <link rel="stylesheet" href="estilo.css" />
+        <title>Image Compresser by Gene Algorithm</title>
+        <link rel="stylesheet" href="mostyle.css" />
     </head>
     <body>
-        <h1>AI image compresser</h1>
-        <p>LEFT PANEL</p>
+    
+        <style type="text/css">
+        html,
+        header {
+            background-color: #f6f6f6;
+        }
+        
+        #pagecontainer {
+            background-color: #fff; 
+            min-height: calc(100vh - 510px);
+        }
+
+        .container {
+            width: 100%;
+            line-height: 120%
+        }
+        
+        .nav {
+            border-bottom: 0;
+            background-color: #f6f6f6;
+        }
+        
+        .inner-page {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            padding:24px;
+        }
+        
+        h1 {
+            border-bottom: 0;
+            font-weight:900;
+        }
+        
+        .summary h1{
+                
+        }
+        
+        .meta .btn:not(.disabled):hover {
+            background-color: #ccc;
+        }
+        
+        a.disabled {
+        cursor: default;
+        }
+        
+        a.btn.disabled:hover {
+        text-decoration: initial;
+        color: #777;
+        }
+        
+        .meta .btn {
+        margin-top: 24px;
+        }
+        
+        .pure-menu-link:hover, .pure-menu-link:focus {
+        background-color: #cccccc;
+        }
+        
+        .summary {
+        padding-top: 40px;
+        min-height:270px;
+        display:flex;
+        }
+        
+        @media (max-width: 630px) {
+            .summary {
+                display: block;
+            }
+            .item-image-right {
+            margin-top: 72px;
+            text-align: center;
+            }
+        }
+        .show-on-hover {
+        display: none;
+        }
+        
+        a:hover .hide-on-hover {
+        display: none;
+        }
+        a:hover .show-on-hover {
+        display: inline;
+        }
+        </style>
+
+
+        <div style="background-color: #f6f6f6;padding-bottom:0px;font-weight=bold;">
+        <div class="inner-page summary">
+        <div class="item-image" style="text-align:center;flex:10;"><img src="compress.png"></div>
+        <div class="item-image-right" style="flex:1;">
+            <h1>Image Compresser by Gene Algorithm</h1>
+            
+            <span style="font-family: &quot;Lucida Grande&quot;,Verdana,sans-serif;">Mo<span style="color: #bbb;margin-left:20px;font-size:14px;">09/11/2021</span></span>
+
+        </div>
+        </div>
+        </div>
+        
+        <div id="pagecontainer" class="container">
+        <div id="post-content" class="inner-page">
+
+        <p style="color:black">LEFT PANEL</p>
         <div class="container">
             <input type="file" id="fileUpload" style="width: 51.2%;" />
         </div>
-        <div class="container2">
+        <div class="container">
             <button onclick="colorOrigScatter()">Color Scattering</button>
             <button onclick="colorOrigAnalysis()">Analysis</button>
         </div>
-        <div class="container3">
+        <hr>
+        <div class="container">
             <input type="text" placeholder="Population Quantity..." id="inputPopulationQuantity" />
             <input type="text" placeholder="Chromosome Size..." id="inputChromosomeSize" />
             <input type="text" placeholder="Max Generation..." id="inputGenerationMax" />
             <button onclick="compressGA()">Compress by GA</button>
         </div>
+        
         <div class="display" id="outputGA"></div>
-
-        <p>RIGHT PANEL</p>
+        <hr>
+        
+        <p style="color:black">RIGHT PANEL</p>
         <div class="container">
             <button onclick="colorProcScatter()">Color Scattering</button>
             <button onclick="colorProcAnalysis()">Analysis</button>
             <button onclick="generateOutputImg()">generateOutputImg</button>
+        </div>
+
+        </div>
         </div>
 
         <canvas id="imageProcessCanvas" style="border: 1px solid #d3d3d3;">
@@ -36,6 +143,10 @@
             Your browser does not support the HTML5 canvas tag.
         </canvas>
         <img id="outputImg" />
+        
+        <footer id="post-footer" style="background-color: rgb(51, 51, 51); padding-top:50px; padding-bottom:50px; text-align:center;font-size:13px;">
+        </footer>
+
 
         <script src="frameworkGeneticAlgorithm.js"></script>
         <script src="frameworkPosition.js"></script>
@@ -43,5 +154,6 @@
         <script src="frameworkAnalysis.js"></script>
         <script src="frameworkProcess.js"></script>
         <script src="mainDrawings.js"></script>
+        
     </body>
 </html>
