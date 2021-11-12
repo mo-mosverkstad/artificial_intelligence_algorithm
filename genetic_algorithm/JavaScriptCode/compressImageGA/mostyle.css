@@ -524,3 +524,15 @@ sup.md-footnote {
     background: #5e3e2b;
 }
 
+button{
+    padding: 0 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(180deg, #249225, #85c285);
+    color: white;
+}
+
+button:hover{
+    background: #4c9a2a;
+}

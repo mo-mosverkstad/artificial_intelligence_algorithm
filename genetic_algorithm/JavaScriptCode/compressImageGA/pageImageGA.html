@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        <title>Image Compresser by Gene Algorithm</title>
+        <title>Image Compressor by Gene Algorithm</title>
         <link rel="stylesheet" href="mostyle.css" />
     </head>
     <body>
@@ -96,7 +96,7 @@
         <div class="inner-page summary">
         <div class="item-image" style="text-align:center;flex:10;"><img src="compress.png"></div>
         <div class="item-image-right" style="flex:1;">
-            <h1>Image Compresser by Gene Algorithm</h1>
+            <h1>Image Compressor by Gene Algorithm</h1>
             
             <span style="font-family: &quot;Lucida Grande&quot;,Verdana,sans-serif;">Mo<span style="color: #bbb;margin-left:20px;font-size:14px;">09/11/2021</span></span>
 
@@ -116,13 +116,21 @@
             <button onclick="colorOrigAnalysis()">Analysis</button>
         </div>
         <hr>
-        <div class="container">
-            <input type="text" placeholder="Population Quantity..." id="inputPopulationQuantity" />
-            <input type="text" placeholder="Chromosome Size..." id="inputChromosomeSize" />
-            <input type="text" placeholder="Max Generation..." id="inputGenerationMax" />
-            <button onclick="compressGA()">Compress by GA</button>
-        </div>
-        
+        <table class="container">
+            <tr>
+                <td><label>Population Quantity</label></td>
+                <td><input type="text" placeholder="Population Quantity..." id="inputPopulationQuantity" value = "1000"/></td>
+            </tr>
+            <tr>
+                <td><label>Chromosome Size</label></td>
+                <td><input type="text" placeholder="Chromosome Size..." id="inputChromosomeSize" value = "64"/></td>
+            </tr>
+            <tr>
+                <td><label>Max Generation</label></td>
+                <td><input type="text" placeholder="Max Generation..." id="inputGenerationMax" value = "1000"/></td>
+            </tr>
+        </table>
+        <button onclick="compressGA()">Compress by GA</button>
         <div class="display" id="outputGA"></div>
         <hr>
         
