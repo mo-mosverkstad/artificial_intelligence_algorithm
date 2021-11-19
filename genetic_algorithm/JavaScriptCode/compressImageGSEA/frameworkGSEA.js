@@ -143,26 +143,3 @@ function cleanDiv(divId) {
 
 }
 
-// processing area
-function getColorsByGA(target) {
-    var population_quantity = 100;
-    var chromosomeSize = 8;
-    var population = generatePopulation(population_quantity, targetText.length);
-    setScore(population, target);
-    population = sortPopulation(population);
-    
-    var generationNumber = 0;
-    var generationMax = 200;
-    
-    while (population[0].score != 0 && generationNumber < generationMax){
-        var newGeneration = crossOver(population);
-        setScore(newGeneration, target);
-        population = population.concat(newGeneration);
-        population = sortPopulation(population);
-        population = population.slice(0, population_quantity);
-        appendInDiv("evolutionInfo", "Generation: " + generationNumber + "; result: " + convertToAscii(population[0].genes) + "; score: " + population[0].score);
-        generationNumber++;
-    }
-    //console.log("result", population[0].genes);
-    appendInDiv("evolutionInfo", "Total generation number: " + generationNumber + "; result: " + convertToAscii(population[0].genes));
-}

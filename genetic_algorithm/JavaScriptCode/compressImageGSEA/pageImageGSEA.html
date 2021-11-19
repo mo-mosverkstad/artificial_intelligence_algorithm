@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
-        <title>Image Compressor by GSEA</title>
+        <title>Bildkomprimering av GSEA</title>
         <link rel="stylesheet" href="mostyle.css" />
     </head>
     <body>
@@ -96,9 +96,9 @@
         <div class="inner-page summary">
         <div class="item-image" style="text-align:center;flex:10;"><img src="compress.png"></div>
         <div class="item-image-right" style="flex:1;">
-            <h1>Image Compressor by GSEA</h1>
+            <h1>Bildkomprimering av GSEA</h1>
             
-            <span style="font-family: &quot;Lucida Grande&quot;,Verdana,sans-serif;">Mo<span style="color: #bbb;margin-left:20px;font-size:14px;">09/11/2021</span></span>
+            <span style="font-family: &quot;Lucida Grande&quot;,Verdana,sans-serif;">Mo<span style="color: #bbb;margin-left:20px;font-size:14px;">21/10/2021</span></span>
 
         </div>
         </div>
@@ -107,38 +107,38 @@
         <div id="pagecontainer" class="container">
         <div id="post-content" class="inner-page">
 
-        <p style="color:black">LEFT PANEL</p>
+        <p style="color:black">VÄNSTRA PANEL</p>
         <div class="container">
             <input type="file" id="fileUpload" style="width: 51.2%;" />
         </div>
         <div class="container">
-            <button onclick="colorOrigScatter()">Color Scattering</button>
-            <button onclick="colorOrigAnalysis()">Analysis</button>
+            <button onclick="colorOrigScatter()">Bild färgfördelning</button>
+            <button onclick="colorOrigAnalysis()">Analysera</button>
         </div>
         <hr>
         <table class="container">
             <tr>
-                <td><label>Population Quantity</label></td>
-                <td><input type="text" placeholder="Population Quantity..." id="inputPopulationQuantity" value = "1000"/></td>
+                <td><label>Antal population</label></td>
+                <td><input type="text" placeholder="Antal population..." id="inputPopulationQuantity" value = "1000"/></td>
             </tr>
             <tr>
-                <td><label>Chromosome Size</label></td>
-                <td><input type="text" placeholder="Chromosome Size..." id="inputChromosomeSize" value = "64"/></td>
+                <td><label>Längd av gensekvensen</label></td>
+                <td><input type="text" placeholder="Längd av gensekvensen..." id="inputChromosomeSize" value = "64"/></td>
             </tr>
             <tr>
                 <td><label>Max Generation</label></td>
                 <td><input type="text" placeholder="Max Generation..." id="inputGenerationMax" value = "1000"/></td>
             </tr>
         </table>
-        <button onclick="compressGA()">Compress by GA</button>
-        <div class="display" id="outputGA"></div>
+        <button onclick="compressGSEA()">Komprimera av GSEA</button>
+        <div class="display" id="outputGSEA"></div>
         <hr>
         
-        <p style="color:black">RIGHT PANEL</p>
+        <p style="color:black">HÖGRA PANEL</p>
         <div class="container">
-            <button onclick="colorProcScatter()">Color Scattering</button>
-            <button onclick="colorProcAnalysis()">Analysis</button>
-            <button onclick="generateOutputImg()">generateOutputImg</button>
+            <button onclick="colorProcScatter()">Bild färgfördelning</button>
+            <button onclick="colorProcAnalysis()">Analysera</button>
+            <button onclick="generateOutputImg()">Generera bilden</button>
         </div>
 
         </div>

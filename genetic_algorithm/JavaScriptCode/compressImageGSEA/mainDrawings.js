@@ -116,7 +116,7 @@ function shrinkText(string, length) {
     }
 }
 
-function generateBestOnGA(targtC) {
+function generateBestOnGSEA(targtC) {
     var populationQuantity = parseInt(document.getElementById("inputPopulationQuantity").value);
     var chromosomeSize = parseInt(document.getElementById("inputChromosomeSize").value);
     var bestChromosome = {chromosome: {genes: [], score: 0}, met: 0};
@@ -144,7 +144,7 @@ function generateBestOnGA(targtC) {
         } else {
             increaseBestChromosome(bestChromosome);
         }
-        appendInDiv("outputGA", "Generation: " + generationNumber + "; result: " + shrinkText(convertToAscii(population[0].genes),60) + "; score: " + (population[0].score * 100 / imageColorAmount).toFixed(6) + "%");
+        appendInDiv("outputGSEA", "Generation: " + generationNumber + "; resultat: " + shrinkText(convertToAscii(population[0].genes),60) + "; ∆C: " + (population[0].score * 100 / imageColorAmount).toFixed(6) + "%");
 
         //console.log(bestChromosome);
         generationNumber++;
@@ -152,17 +152,16 @@ function generateBestOnGA(targtC) {
     return bestChromosome;
 }
 
-function compressGA() {
+function compressGSEA() {
     if (imageOrigData == null) return;
     var histogramArray = statisData(imageOrigData);
-    //document.getElementById('outputGA').innerHTML = histogramArray;
-    cleanDiv("outputGA");
-    appendInDiv("outputGA", "\nTo generate RED using GA:");
-    bestChromosomeR = generateBestOnGA(histogramArray.r);
-    appendInDiv("outputGA", "\nTo generate GREEN using GA:");
-    bestChromosomeG = generateBestOnGA(histogramArray.g);
-    appendInDiv("outputGA", "\nTo generate BLUE using GA:");
-    bestChromosomeB = generateBestOnGA(histogramArray.b);
+    cleanDiv("outputGSEA");
+    appendInDiv("outputGSEA", "\nAtt generera RÖD med GSEA:");
+    bestChromosomeR = generateBestOnGSEA(histogramArray.r);
+    appendInDiv("outputGSEA", "\nAtt generera GRÖN med GSEA:");
+    bestChromosomeG = generateBestOnGSEA(histogramArray.g);
+    appendInDiv("outputGSEA", "\nAtt generera BLÅ med GSEA:");
+    bestChromosomeB = generateBestOnGSEA(histogramArray.b);
     
     pos = canvasPosition.getImagePosition(1, 0);
     imageProcess3(compressOnReferData, imageOrigData, pos, {r:bestChromosomeR.chromosome.genes, g:bestChromosomeG.chromosome.genes, b:bestChromosomeB.chromosome.genes});
